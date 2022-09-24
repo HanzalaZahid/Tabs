@@ -19,6 +19,12 @@
     $sql        =    "select * from tabs";
     $result     =    $conn->query($sql);
 
+    $class_methods = get_class_methods($result);
+        foreach ($class_methods as $method_name) 
+        {
+            echo "$method_name<br/>";
+        }
+
     if ($result->num_rows > 0)
     {
         while ($row =   $result->fetch_assoc())

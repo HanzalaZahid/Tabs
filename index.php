@@ -54,8 +54,12 @@
         xhttp.onload =   function()
         {
             let target  =   document.getElementById("content");
-            console.log(this.responseText+"TAREGT: "+target);
-            
+            let data    =   JSON.stringify(this.responseText);
+            console.log(data);
+            for (let i  =   0;  i <   data.lenght; i++)
+            {
+                console.log(data[i])
+            }            
         }
         xhttp.open("GET", "fetch_content.php?tab_id="+id);
         xhttp.send();

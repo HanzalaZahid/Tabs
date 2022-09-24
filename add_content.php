@@ -47,6 +47,7 @@
     if(isset($_POST['submit']))
     {
         $tab = $_POST['tab_select'];
+        echo $tab;
         $content = $_POST['content'];
 
         $sql = "INSERT INTO contents (tab_id, content) VALUES ($tab,'$content')";
