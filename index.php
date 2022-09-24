@@ -29,8 +29,8 @@
             ?>
         </ul>
     </header>
-    <div class="content">
-        
+    <div class="content" id="content">
+
     </div>
 </body>
 </html>
@@ -49,6 +49,15 @@
     )
     function update_content(id)
     {
-        console.log("UPDATE : "+id);
+        // console.log("UPDATE : "+id);
+        const xhttp =   new XMLHttpRequest();
+        xhttp.onload =   function()
+        {
+            let target  =   document.getElementById("content");
+            console.log(this.responseText+"TAREGT: "+target);
+            
+        }
+        xhttp.open("GET", "fetch_content.php?tab_id="+id);
+        xhttp.send();
     }
 </script>
