@@ -23,7 +23,7 @@
             {
                 while($row  =   $result->fetch_assoc())
                 {
-                    echo '<li><a href="'.$row['id'].'" data-id="'.$row['id'].'">'.$row['name'].'</a></li>';
+                    echo '<li><a href="" data-id="'.$row['id'].'">'.$row['name'].'</a></li>';
                 }
             }
             ?>
@@ -37,13 +37,18 @@
 
 <script>
     let tabs = document.querySelectorAll('header li>a');
-    console.log(tabs);
-    tabs.forEach(tab=>
-    {
-        tab.addEventListener("click", update_content(this.data-id));
-    })
+    tabs.forEach(
+        element=>
+        {
+            element.addEventListener("click", function(event)
+            {
+                event.preventDefault();
+                update_content(element.getAttribute("data-id"));
+            })
+        }
+    )
     function update_content(id)
     {
-        console.log(id);
+        console.log("UPDATE : "+id);
     }
 </script>
