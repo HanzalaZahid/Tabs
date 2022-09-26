@@ -54,14 +54,30 @@
         xhttp.onload =   function()
         {
             let target  =   document.getElementById("content");
-            let data    =   JSON.stringify(this.responseText);
-            console.log(data);
-            for (let i  =   0;  i <   data.lenght; i++)
+            console.log(this.responseText)
+            if (this.responseText != "")
             {
-                console.log(data[i])
-            }            
+                var data    =   JSON.parse(this.responseText);
+                while(target.firstChild)
+                {
+                    target.removeChild(target.lastChild)
+                }
+            }
+            else
+            {
+                alert ("No Data Found");
+                return;
+            }
+            for(let [key, value] of Object.entries(data))
+            {
+                let content =   document.createElement("p");
+                let text    =   document.createTextNode(value);
+                content.appendChild(text);
+
+                target.appendChild(content)
+            }         
         }
-        xhttp.open("GET", "fetch_content.php?tab_id="+id);
+        xhttp.open("POST", "fetch_content.php?tab_id="+id);
         xhttp.send();
     }
 </script>
